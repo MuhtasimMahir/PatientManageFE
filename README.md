@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
 
+## Overview
+
+![image](https://user-images.githubusercontent.com/25501967/193693715-ebdb2dc4-3a45-4ba2-b2cf-d7fae5fe0f36.png)
+
+
 ## Adding Patient
 
 ![image](https://user-images.githubusercontent.com/25501967/193692035-018c8210-c665-43b0-8fda-426ac00b916f.png)

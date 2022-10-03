@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" style="color:white;">Patient Manager</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -5,9 +8,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" (click)="onOpenModal(null, 'add')">Add Patient <span class="sr-only">(current)</span></a>
-      </li>
+<!--      <li class="nav-item active">-->
+<!--        <a class="nav-link" (click)="onOpenModal(null, 'add')">Add Patient <span class="sr-only">(current)</span></a>-->
+<!--      </li>-->
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input type="search" (ngModelChange)="searchPatients(key.value)" #key="ngModel" ngModel
@@ -15,6 +18,29 @@
     </form>
   </div>
 </nav>
+
+<br>
+<br>
+
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <h5 class="card-title">Patient List <span class="text-muted fw-normal ms-2">({{patients?.length}})</span></h5>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+
+        <div>
+          <a href="#" (click)="onOpenModal(null, 'add')" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Add New</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container" id="main-container">
   <div class="row">
     <div *ngFor="let patient of patients" class="col-md-6 col-xl-3">
@@ -33,10 +59,15 @@
           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{patient?.phone}}</li>
         </ul>
         <div class="card-body">
-          <div class="float-right btn-group btn-group-sm">
-            <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-            <a (click)="onOpenModal(patient, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+          <div class="d-flex gap-2 pt-6" style="gap: 34px">
+            <button type="button" (click)="onOpenModal(patient, 'open')" class="btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i>Details</button>
+            <div class="float-right btn-group btn-group-sm">
+              <!--            <button type="button" (click)="onOpenModal(patient, 'open')" class="flex btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i> Profile</button>-->
+              <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+              <a (click)="onOpenModal(patient, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -162,6 +193,56 @@
             <button (click)="onDeletePatient(deletePatient?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--open patient modal-->
+<div class="modal fade" id="openPatientModal" tabindex="-1" role="dialog" aria-labelledby="patientOpenModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updatePatientModalLabel">Details of {{openPatient?.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #openForm="ngForm">
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" ngModel="{{openPatient?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+          </div>
+          <input type="hidden" ngModel="{{openPatient?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+          <input type="hidden" ngModel="{{openPatient?.patientCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" ngModel="{{openPatient?.gender}}" name="gender" class="form-control" id="gender" placeholder="Gender">
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of birth</label>
+            <input type="text" ngModel="{{openPatient?.dob}}" name="dob" class="form-control" id="dob" placeholder="date of birth..">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" ngModel="{{openPatient?.phone}}" name="phone" class="form-control" id="dphoneob" placeholder="Phone">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" ngModel="{{openPatient?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" ngModel="{{openPatient?.address}}" name="address" class="form-control" id="address" placeholder="Address">
+          </div>
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input type="text" ngModel="{{openPatient?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+          </div>
+
+        </form>
       </div>
     </div>
   </div>

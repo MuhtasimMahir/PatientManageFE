@@ -12,8 +12,9 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
   public patients: Patient[];
   public editPatient: Patient;
+  public openPatient: Patient;
   public deletePatient: Patient;
-  title: 'Patient Manager';
+
 
   constructor(private patientService: PatientService) {
   }
@@ -102,6 +103,10 @@ export class AppComponent implements OnInit {
     if (mode === 'edit') {
       this.editPatient = patient;
       button.setAttribute('data-target', '#updatePatientModal');
+    }
+    if (mode === 'open') {
+      this.openPatient = patient;
+      button.setAttribute('data-target', '#openPatientModal');
     }
     if (mode === 'delete') {
       this.deletePatient = patient;

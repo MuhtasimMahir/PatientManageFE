@@ -19,6 +19,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ![image](https://user-images.githubusercontent.com/25501967/193692470-7ec1cdfe-e01a-4314-b9f7-dbbf51656704.png)
 
+##Detail of a patient
+
+![image](https://user-images.githubusercontent.com/25501967/193692615-e98945b4-b921-4dfd-a707-eb23573a8d14.png)
+
+
 
 ## Further help
 

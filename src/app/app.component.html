@@ -91,11 +91,18 @@
             </div>
             <div class="form-group">
               <label for="gender">Gender</label>
-              <input type="text" ngModel name="gender" class="form-control" id="gender" placeholder="gender" required>
+              <select class="select2 form-control select2-hidden-accessible form-control" ngModel name="gender" id="gender" data-select2-placeholder="Select state" data-select2-id="select2-data-4-680y" tabindex="-1" aria-hidden="true">
+                <option data-select2-id="select2-data-6-cshs"></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Other</option>
+              </select>
+<!--              <input type="text" ngModel name="gender" class="form-control" id="gender" placeholder="gender" required>-->
+
             </div>
             <div class="form-group">
               <label for="dob">Date of birth</label>
-              <input type="dob" ngModel name="dob" class="form-control" id="dob" placeholder="Date of birth" required>
+              <input type="date" ngModel name="dob" class="form-control" id="dob" placeholder="Date of birth" required>
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
@@ -144,11 +151,17 @@
             <input type="hidden" ngModel="{{editPatient?.patientCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
             <div class="form-group">
               <label for="gender">Gender</label>
-              <input type="text" ngModel="{{editPatient?.gender}}" name="gender" class="form-control" id="gender" placeholder="Gender">
+              <select class="select2 form-control select2-hidden-accessible form-control" ngModel name="gender" id="gender" data-select2-placeholder="Select state" data-select2-id="select2-data-4-680y" tabindex="-1" aria-hidden="true">
+                <option data-select2-id="select2-data-6-cshs"></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Other</option>
+              </select>
+<!--              <input type="text" ngModel="{{editPatient?.gender}}" name="gender" class="form-control" id="gender" placeholder="Gender">-->
             </div>
             <div class="form-group">
               <label for="dob">Date of birth</label>
-              <input type="text" ngModel="{{editPatient?.dob}}" name="dob" class="form-control" id="dob" placeholder="date of birth..">
+              <input type="date" ngModel="{{editPatient?.dob}}" name="dob" class="form-control" id="dob" placeholder="date of birth..">
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>

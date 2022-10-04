@@ -3,10 +3,10 @@
 
 
 
-<div style="height: 100vh; overflow: scroll; background-image: linear-gradient(#f9c74f, #f8961e);">
+<div style="height: 100vh; overflow: scroll; background-image: linear-gradient(#ced4da, #adb5bd);">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-image: linear-gradient(#242423, #242423); height: 91px;">
-    <a class="navbar-brand" style="color:white;">Patient Manager</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-image: linear-gradient(#343a40, #343a40); height: 91px;">
+    <a class="navbar-brand" style="color:white; font-size: 38px;">Patient Manager</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,14 +30,14 @@
     <div class="row align-items-center">
       <div class="col-md-6">
         <div class="mb-3">
-          <h5 class="card-title" style="color: white">Patient List <span class=" fw-normal ms-2" style="color: #63ad6f">({{patients?.length}})</span></h5>
+          <h5 class="card-title" style="color: white">Patient List <span class=" fw-normal ms-2" style="color: #343a40">({{patients?.length}})</span></h5>
         </div>
       </div>
       <div class="col-md-6">
         <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
 
           <div>
-            <a href="#" (click)="onOpenModal(null, 'add')" data-bs-toggle="modal" data-bs-target=".add-new" style="background: #f9a620; border-color: #ffd449" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Add New</a>
+            <a href="#" (click)="onOpenModal(null, 'add')" data-bs-toggle="modal" data-bs-target=".add-new" style="background: #ced4da; border-color: whitesmoke" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Add New</a>
           </div>
 
         </div>
@@ -48,7 +48,7 @@
   <div class="container" id="main-container">
     <div class="row">
       <div *ngFor="let patient of patients" class="col-md-6 col-xl-3" >
-        <div class="card m-b-30" style="background-color: #faf0ca; border-radius: 1.5%;">
+        <div class="card m-b-30" style="background-color: whitesmoke; border-radius: 1.5%;">
           <div class="card-body row" >
             <div class="col-6" >
               <a href=""><img src="{{patient?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
@@ -67,8 +67,8 @@
               <button type="button" (click)="onOpenModal(patient, 'open')" class="btn btn-soft-primary btn-sm w-50" ><i class="bx bx-user me-1"></i>Details</button>
               <div class="float-right btn-group btn-group-sm">
                 <!--            <button type="button" (click)="onOpenModal(patient, 'open')" class="flex btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i> Profile</button>-->
-                <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" style="background-color: #0f4c5c; width: auto; height: auto;" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                <a (click)="onOpenModal(patient, 'delete')" class="btn btn-secondary tooltips" style="background-color: #9a031e; width: auto;" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" style="border-color: white; background-color: #f8f9fa; width: auto; height: auto;" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                <a (click)="onOpenModal(patient, 'delete')" class="btn btn-secondary tooltips" style="border-color: white; background-color: #e9ecef; width: auto;" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
               </div>
             </div>
 

@@ -4,7 +4,7 @@
 
 
 body{margin-top:20px;
-  background-color:#eee;
+  background-image: linear-gradient(#2b2d42, #2b2d42);
 }
 .card {
   margin-bottom: 24px;

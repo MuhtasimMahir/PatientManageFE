@@ -1,270 +1,277 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white;">Patient Manager</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-<!--      <li class="nav-item active">-->
-<!--        <a class="nav-link" (click)="onOpenModal(null, 'add')">Add Patient <span class="sr-only">(current)</span></a>-->
-<!--      </li>-->
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input type="search" (ngModelChange)="searchPatients(key.value)" #key="ngModel" ngModel
-             name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search patients..." required>
-    </form>
-  </div>
-</nav>
 
-<br>
-<br>
 
-<div class="container">
-  <div class="row align-items-center">
-    <div class="col-md-6">
-      <div class="mb-3">
-        <h5 class="card-title">Patient List <span class="text-muted fw-normal ms-2">({{patients?.length}})</span></h5>
+<div style="height: 100vh; background-image: linear-gradient(#f9c74f, #f8961e);">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-image: linear-gradient(#242423, #242423); height: 91px;">
+    <a class="navbar-brand" style="color:white;">Patient Manager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02" style="justify-content: center;">
+      <ul class="navbar-nav mr-auto">
+        <!--      <li class="nav-item active">-->
+        <!--        <a class="nav-link" (click)="onOpenModal(null, 'add')">Add Patient <span class="sr-only">(current)</span></a>-->
+        <!--      </li>-->
+      </ul>
+      <form class="form-inline my-2 my-lg-0" >
+        <input type="search" (ngModelChange)="searchPatients(key.value)" #key="ngModel" ngModel
+               name="key" id="searchName" class="form-control mr-sm-2"  placeholder="Search patients..." required>
+      </form>
+    </div>
+  </nav>
+
+
+  <br>
+  <br>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <h5 class="card-title" style="color: white">Patient List <span class=" fw-normal ms-2" style="color: #63ad6f">({{patients?.length}})</span></h5>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+
+          <div>
+            <a href="#" (click)="onOpenModal(null, 'add')" data-bs-toggle="modal" data-bs-target=".add-new" style="background: #f9a620; border-color: #ffd449" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Add New</a>
+          </div>
+
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
-
-        <div>
-          <a href="#" (click)="onOpenModal(null, 'add')" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Add New</a>
-        </div>
-
-      </div>
-    </div>
   </div>
-</div>
 
-<div class="container" id="main-container">
-  <div class="row">
-    <div *ngFor="let patient of patients" class="col-md-6 col-xl-3">
-      <div class="card m-b-30">
-        <div class="card-body row">
-          <div class="col-6">
-            <a href=""><img src="{{patient?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
-          </div>
-          <div class="col-6 card-title align-self-center mb-0">
-            <h5>{{patient?.name}}</h5>
-            <p class="m-0">{{patient?.gender}}</p>
-          </div>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{patient?.email}}</li>
-          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{patient?.phone}}</li>
-        </ul>
-        <div class="card-body">
-          <div class="d-flex gap-2 pt-6" style="gap: 34px">
-            <button type="button" (click)="onOpenModal(patient, 'open')" class="btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i>Details</button>
-            <div class="float-right btn-group btn-group-sm">
-              <!--            <button type="button" (click)="onOpenModal(patient, 'open')" class="flex btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i> Profile</button>-->
-              <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a (click)="onOpenModal(patient, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+  <div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let patient of patients" class="col-md-6 col-xl-3" >
+        <div class="card m-b-30" style="background-color: #faf0ca; border-radius: 1.5%;">
+          <div class="card-body row" >
+            <div class="col-6" >
+              <a href=""><img src="{{patient?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+            </div>
+            <div class="col-6 card-title align-self-center mb-0">
+              <h5 >{{patient?.name}}</h5>
+              <p class="m-0" >{{patient?.gender}}</p>
             </div>
           </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{patient?.email}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{patient?.phone}}</li>
+          </ul>
+          <div class="card-body">
+            <div class="d-flex gap-2 pt-6" style="gap: 74px">
+              <button type="button" (click)="onOpenModal(patient, 'open')" class="btn btn-soft-primary btn-sm w-50" ><i class="bx bx-user me-1"></i>Details</button>
+              <div class="float-right btn-group btn-group-sm">
+                <!--            <button type="button" (click)="onOpenModal(patient, 'open')" class="flex btn btn-soft-primary btn-sm w-50"><i class="bx bx-user me-1"></i> Profile</button>-->
+                <a (click)="onOpenModal(patient, 'edit')" class="btn btn-primary tooltips" style="background-color: #0f4c5c; width: auto; height: auto;" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                <a (click)="onOpenModal(patient, 'delete')" class="btn btn-secondary tooltips" style="background-color: #9a031e; width: auto;" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+              </div>
+            </div>
 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Patient Modal -->
+    <div class="modal fade" id="addPatientModal" tabindex="-1" role="dialog" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addPatientModalLabel">Add Patient</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #addForm="ngForm" (ngSubmit)="onAddPatient(addForm)">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="select2 form-control select2-hidden-accessible form-control" ngModel name="gender" id="gender" data-select2-placeholder="Select state" data-select2-id="select2-data-4-680y" tabindex="-1" aria-hidden="true">
+                  <option data-select2-id="select2-data-6-cshs"></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Others">Other</option>
+                </select>
+                <!--              <input type="text" ngModel name="gender" class="form-control" id="gender" placeholder="gender" required>-->
+
+              </div>
+              <div class="form-group">
+                <label for="dob">Date of birth</label>
+                <input type="date" ngModel name="dob" class="form-control" id="dob" placeholder="Date of birth" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" ngModel name="phone" class="form-control" id="phone" placeholder="Phone" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" ngModel name="address" class="form-control" id="address" placeholder="Address" required>
+              </div>
+              <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="add-patient-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="updatePatientModal" tabindex="-1" role="dialog" aria-labelledby="patientEditModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updatePatientModalLabel">Edit Patient {{editPatient?.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #editForm="ngForm">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" ngModel="{{editPatient?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+              </div>
+              <input type="hidden" ngModel="{{editPatient?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+              <input type="hidden" ngModel="{{editPatient?.patientCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="select2 form-control select2-hidden-accessible form-control" ngModel name="gender" id="gender" data-select2-placeholder="Select state" data-select2-id="select2-data-4-680y" tabindex="-1" aria-hidden="true">
+                  <option data-select2-id="select2-data-6-cshs"></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Others">Other</option>
+                </select>
+                <!--              <input type="text" ngModel="{{editPatient?.gender}}" name="gender" class="form-control" id="gender" placeholder="Gender">-->
+              </div>
+              <div class="form-group">
+                <label for="dob">Date of birth</label>
+                <input type="date" ngModel="{{editPatient?.dob}}" name="dob" class="form-control" id="dob" placeholder="date of birth..">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" ngModel="{{editPatient?.phone}}" name="phone" class="form-control" id="dphoneob" placeholder="Phone">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" ngModel="{{editPatient?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" ngModel="{{editPatient?.address}}" name="address" class="form-control" id="address" placeholder="Address">
+              </div>
+              <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input type="text" ngModel="{{editPatient?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                <button (click)="onUpdatePatient(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deletePatientModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModelLabel">Delete Patient</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete patient {{deletePatient?.name}}?</p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button (click)="onDeletePatient(deletePatient?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Add Patient Modal -->
-  <div class="modal fade" id="addPatientModal" tabindex="-1" role="dialog" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+  <!--open patient modal-->
+  <div class="modal fade" id="openPatientModal" tabindex="-1" role="dialog" aria-labelledby="patientOpenModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addPatientModalLabel">Add Patient</h5>
+          <h5 class="modal-title" id="updatePatientModalLabel">Details of {{openPatient?.name}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form #addForm="ngForm" (ngSubmit)="onAddPatient(addForm)">
+          <form #openForm="ngForm">
+
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+              <input type="text" ngModel="{{openPatient?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
             </div>
+            <input type="hidden" ngModel="{{openPatient?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+            <input type="hidden" ngModel="{{openPatient?.patientCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
             <div class="form-group">
               <label for="gender">Gender</label>
-              <select class="select2 form-control select2-hidden-accessible form-control" ngModel name="gender" id="gender" data-select2-placeholder="Select state" data-select2-id="select2-data-4-680y" tabindex="-1" aria-hidden="true">
-                <option data-select2-id="select2-data-6-cshs"></option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Others">Other</option>
-              </select>
-<!--              <input type="text" ngModel name="gender" class="form-control" id="gender" placeholder="gender" required>-->
-
+              <input type="text" ngModel="{{openPatient?.gender}}" name="gender" class="form-control" id="gender" placeholder="Gender">
             </div>
             <div class="form-group">
               <label for="dob">Date of birth</label>
-              <input type="date" ngModel name="dob" class="form-control" id="dob" placeholder="Date of birth" required>
+              <input type="text" ngModel="{{openPatient?.dob}}" name="dob" class="form-control" id="dob" placeholder="date of birth..">
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="text" ngModel name="phone" class="form-control" id="phone" placeholder="Phone" required>
+              <input type="text" ngModel="{{openPatient?.phone}}" name="phone" class="form-control" id="dphoneob" placeholder="Phone">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+              <input type="text" ngModel="{{openPatient?.email}}" name="email" class="form-control" id="email" placeholder="Email">
             </div>
             <div class="form-group">
               <label for="address">Address</label>
-              <input type="text" ngModel name="address" class="form-control" id="address" placeholder="Address" required>
+              <input type="text" ngModel="{{openPatient?.address}}" name="address" class="form-control" id="address" placeholder="Address">
             </div>
             <div class="form-group">
               <label for="imageUrl">Image URL</label>
-              <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+              <input type="text" ngModel="{{openPatient?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
             </div>
-            <div class="modal-footer">
-              <button type="button" id="add-patient-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
-            </div>
+
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Edit Modal -->
-  <div class="modal fade" id="updatePatientModal" tabindex="-1" role="dialog" aria-labelledby="patientEditModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="updatePatientModalLabel">Edit Patient {{editPatient?.name}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form #editForm="ngForm">
-
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" ngModel="{{editPatient?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
-            </div>
-            <input type="hidden" ngModel="{{editPatient?.id}}" name="id" class="form-control" id="id" placeholder="Email">
-            <input type="hidden" ngModel="{{editPatient?.patientCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
-            <div class="form-group">
-              <label for="gender">Gender</label>
-              <select class="select2 form-control select2-hidden-accessible form-control" ngModel name="gender" id="gender" data-select2-placeholder="Select state" data-select2-id="select2-data-4-680y" tabindex="-1" aria-hidden="true">
-                <option data-select2-id="select2-data-6-cshs"></option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Others">Other</option>
-              </select>
-<!--              <input type="text" ngModel="{{editPatient?.gender}}" name="gender" class="form-control" id="gender" placeholder="Gender">-->
-            </div>
-            <div class="form-group">
-              <label for="dob">Date of birth</label>
-              <input type="date" ngModel="{{editPatient?.dob}}" name="dob" class="form-control" id="dob" placeholder="date of birth..">
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="text" ngModel="{{editPatient?.phone}}" name="phone" class="form-control" id="dphoneob" placeholder="Phone">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" ngModel="{{editPatient?.email}}" name="email" class="form-control" id="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label for="address">Address</label>
-              <input type="text" ngModel="{{editPatient?.address}}" name="address" class="form-control" id="address" placeholder="Address">
-            </div>
-            <div class="form-group">
-              <label for="imageUrl">Image URL</label>
-              <input type="text" ngModel="{{editPatient?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-              <button (click)="onUpdatePatient(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
-            </div>
-          </form>
-        </div>
-      </div>
+  <!-- Notification for no patients -->
+  <div *ngIf="patients?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">NO Patient!</h4>
+      <p>No Patient were found.</p>
     </div>
   </div>
 
-  <!-- Delete Modal -->
-  <div class="modal fade" id="deletePatientModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModelLabel">Delete Patient</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Are you sure you want to delete patient {{deletePatient?.name}}?</p>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <button (click)="onDeletePatient(deletePatient?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!--open patient modal-->
-<div class="modal fade" id="openPatientModal" tabindex="-1" role="dialog" aria-labelledby="patientOpenModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="updatePatientModalLabel">Details of {{openPatient?.name}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #openForm="ngForm">
-
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" ngModel="{{openPatient?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
-          </div>
-          <input type="hidden" ngModel="{{openPatient?.id}}" name="id" class="form-control" id="id" placeholder="Email">
-          <input type="hidden" ngModel="{{openPatient?.patientCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
-          <div class="form-group">
-            <label for="gender">Gender</label>
-            <input type="text" ngModel="{{openPatient?.gender}}" name="gender" class="form-control" id="gender" placeholder="Gender">
-          </div>
-          <div class="form-group">
-            <label for="dob">Date of birth</label>
-            <input type="text" ngModel="{{openPatient?.dob}}" name="dob" class="form-control" id="dob" placeholder="date of birth..">
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" ngModel="{{openPatient?.phone}}" name="phone" class="form-control" id="dphoneob" placeholder="Phone">
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" ngModel="{{openPatient?.email}}" name="email" class="form-control" id="email" placeholder="Email">
-          </div>
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" ngModel="{{openPatient?.address}}" name="address" class="form-control" id="address" placeholder="Address">
-          </div>
-          <div class="form-group">
-            <label for="imageUrl">Image URL</label>
-            <input type="text" ngModel="{{openPatient?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
-          </div>
-
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Notification for no patients -->
-<div *ngIf="patients?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
-  <div class="alert alert-info" role="alert">
-    <h4 class="alert-heading">NO Patient!</h4>
-    <p>No Patient were found.</p>
-  </div>
 </div>

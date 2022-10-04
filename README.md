@@ -2,25 +2,33 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![image](https://user-images.githubusercontent.com/25501967/193693715-ebdb2dc4-3a45-4ba2-b2cf-d7fae5fe0f36.png)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Adding Patient
 
-## Build
+![image](https://user-images.githubusercontent.com/25501967/193692035-018c8210-c665-43b0-8fda-426ac00b916f.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Searching Patient
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![image](https://user-images.githubusercontent.com/25501967/193692241-528cbdb5-2d71-41cc-9cd5-587ea7846a58.png)
 
-## Running end-to-end tests
+## Deleting Patient
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![image](https://user-images.githubusercontent.com/25501967/193692365-aba76891-1053-4804-b245-5f7130b7cef8.png)
+
+## Editing Patient 
+
+![image](https://user-images.githubusercontent.com/25501967/193692470-7ec1cdfe-e01a-4314-b9f7-dbbf51656704.png)
+
+## Detail of a patient
+
+![image](https://user-images.githubusercontent.com/25501967/193692615-e98945b4-b921-4dfd-a707-eb23573a8d14.png)
+
+
 
 ## Further help
 

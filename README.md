@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Adding Patient
 
-![image](https://user-images.githubusercontent.com/25501967/193692035-018c8210-c665-43b0-8fda-426ac00b916f.png)
+![image](https://user-images.githubusercontent.com/25501967/193776962-60df13fe-8055-42c5-a35b-79bad27d7ece.png)
 
 
 ## Searching Patient
@@ -22,7 +22,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Editing Patient 
 
-![image](https://user-images.githubusercontent.com/25501967/193692470-7ec1cdfe-e01a-4314-b9f7-dbbf51656704.png)
+![image](https://user-images.githubusercontent.com/25501967/193777066-89f90dfb-a991-490b-a64c-bce3218ca7e6.png)
 
 ## Detail of a patient
 
